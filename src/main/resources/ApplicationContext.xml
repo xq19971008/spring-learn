@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    <bean id="person" class="com.hihonor.learn.Person"/>-->
+<!--    <bean id="person1" class="com.hihonor.learn.Person"/>-->
+    <bean id="cat" class="com.hihonor.learn.Cat"/>
+
+    <bean id = "person" class="com.hihonor.learn.Person">
+        <property name="userName">
+            <value>xieqiang</value>
+        </property>
+        <property name="passWord">
+            <value>123321</value>
+        </property>
+    </bean>
+
+    <bean id = "person1" name="p1,p2" class="com.hihonor.learn.Person"/>
+
+    <bean id = "user" class="com.hihonor.learn.User">
+        <property name="name">
+            <value>xieqiang</value>
+        </property>
+        <property name="id">
+            <value>2</value>
+        </property>
+        <property name="strs">
+            <list>
+                <value>2</value>
+                <value>asd</value>
+                <value>dsa</value>
+            </list>
+        </property>
+
+        <property name="sets">
+            <set>
+                <value>21</value>
+                <value>22</value>
+                <value>22</value>
+            </set>
+        </property>
+
+        <property name="lists">
+            <list>
+                <value>21</value>
+                <value>12</value>
+                <value>41</value>
+            </list>
+        </property>
+
+        <property name="maps">
+            <map>
+                <entry>
+                    <key><value>nanjing</value></key>
+                    <value>1</value>
+                </entry>
+                <entry>
+                    <key><value>beijing</value></key>
+                    <value>2</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+<!--    <bean id = "person2" class="com.hihonor.learn.Person">-->
+<!--        <property name="userName">-->
+<!--            <value>xieqing</value>-->
+<!--        </property>-->
+<!--        <property name="passWord">-->
+<!--            <value>nanjing</value>-->
+<!--        </property>-->
+<!--        <property name="personDao">-->
+<!--            <bean class="com.hihonor.learn.PersonDaoImpl"/>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean id = "userService" class="com.hihonor.learn.UserServiceImpl">-->
+<!--        <property name="userDao">-->
+<!--            <bean class="com.hihonor.learn.UserDaoImpl"/>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <bean id="userDao" class="com.hihonor.learn.UserDaoImpl"/>
+
+<!--    <bean id="userService" class="com.hihonor.learn.UserServiceImpl">-->
+<!--        <property name="userDao">-->
+<!--            <ref bean="userDao"/>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean id="userService" class="com.hihonor.learn.UserServiceImpl">-->
+<!--        <property name="userDao" ref="userDao"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="user2" class="com.hihonor.learn.User">-->
+<!--        <property name="name" value="xieqiang"/>-->
+<!--    </bean>-->
+
+    <bean id="user2" class="com.hihonor.learn.User" p:name="xieqiang"/>
+
+<!--    <bean id="userService" class="com.hihonor.learn.UserServiceImpl" p:userDao-rel="userDao"/>-->
+
+    <bean id="customer" scope="singleton" class="com.hihonor.construct.Customer">
+<!--        <constructor-arg>-->
+<!--            <value>xieqiang</value>-->
+<!--        </constructor-arg>-->
+<!--        <constructor-arg>-->
+<!--            <value>21</value>-->
+<!--        </constructor-arg>-->
+        <constructor-arg type="int">
+            <value>30000</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="conn" class="com.hihonor.factoryBean.ConnectionFactory">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://124.220.201.9:3306/spring_learn?useSSL=false"/>
+        <property name="userName" value="root"/>
+        <property name="passWord" value="xq123456"/>
+    </bean>
+
+    <bean id="connFactory" class="com.hihonor.factoryBean.ConnectionInstanceFactory"/>
+
+    <bean id="conn1" factory-bean="connFactory" factory-method="getConnection"/>
+
+    <bean id="conn2" class="com.hihonor.factoryBean.ConnectionStaticFactory" factory-method="getConnection"/>
+
+    <bean id="student" scope="singleton" class="com.hihonor.life.Student"  destroy-method="myDestory">
+        <property name="name" value="xieqiang"/>
+    </bean>
+</beans>
