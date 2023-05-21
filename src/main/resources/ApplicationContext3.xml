@@ -8,21 +8,12 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-
-    <bean id="person" class="com.hihonor.Convert.Person">
-        <property name="name" value="xieqiang"/>
-        <property name="birth" value="2022/01/01"/>
+    <bean id="car" class="com.hihonor.beanpost.Car">
+        <property name="name" value="byd"/>
+        <property name="nation" value="china"/>
     </bean>
 
-    <bean id="myConvert" class="com.hihonor.Convert.MyConvert">
-        <property name="pattern" value="yyyy-MM-dd"/>
-    </bean>
+    <bean id="person" class="com.hihonor.learn.Person"/>
 
-    <bean id="conversionService1" class="org.springframework.context.support.ConversionServiceFactoryBean">
-        <property name="converters">
-            <set>
-                <ref bean="myConvert"/>
-            </set>
-        </property>
-    </bean>
+    <bean id="myProcessBean" class="com.hihonor.beanpost.MyProcessBean"/>
 </beans>
