@@ -23,9 +23,12 @@ public class ProxyTest {
 
     @Test
     public void tets3() {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/ApplicationContext4.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/ApplicationContext5.xml");
         OrderService orderService = (OrderService) ctx.getBean("orderService");
+        OrderService orderService1 = (OrderService) ctx.getBean("orderService1");
         orderService.register(new Order());
+        orderService1.register(new Order());
         orderService.login("xieqiang","123123");
+        orderService1.login("xieqiang","123123");
     }
 }
