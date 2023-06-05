@@ -31,4 +31,23 @@ public class ProxyTest {
         orderService.login("xieqiang","123123");
         orderService1.login("xieqiang","123123");
     }
+
+
+    @Test
+    public void test4() {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/ApplicationContext6.xml");
+        com.hihonor.proxy.factory.UserService userService = (com.hihonor.proxy.factory.UserService) ctx.getBean("userService");
+        userService.login("xieqiang","123123");
+        userService.register(new User("xieqiang","123123"));
+
+    }
+
+    @Test
+    public void test5() {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/ApplicationContext7.xml");
+        com.hihonor.proxy.Aspect.UserService userService = (com.hihonor.proxy.Aspect.UserService) ctx.getBean("userService");
+//        userService.login("xieqiang","123123");
+        userService.register(new User("xieqiang","123123"));
+
+    }
 }

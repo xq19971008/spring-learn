@@ -24,7 +24,17 @@
     <!--目的: 由程序员根据自己的需要，决定额外功能加入给哪个原始方法(register、login)-->
     <!-- 简单的测试：所有方法都做为切入点，都加入额外的功能-->
     <aop:config>
-        <aop:pointcut id="test1" expression="execution(* com.hihonor.proxy..*.*(..))"/>
+<!--        <aop:pointcut id="test1" expression="args(String,String)"/>-->
+<!--        <aop:pointcut id="test1" expression="execution(* *..OrderServiceImpl.*(..))"/>-->
+<!--        <aop:pointcut id="test1" expression="within(*..OrderServiceImpl)"/>-->
+
+<!--        <aop:pointcut id="test1" expression="execution(* com.hihonor.proxy.*.*(..))"/>-->
+<!--        <aop:pointcut id="test1" expression="within(com.hihonor.proxy.*)"/>-->
+<!--        <aop:pointcut id="test1" expression="@annotation(com.hihonor.proxy.annotation.Log)"/>-->
+<!--        <aop:pointcut id="test1" expression="execution(* login(String,String))"/>-->
+<!--        <aop:pointcut id="test1" expression="execution(* login(..)) and args(String,String)"/>-->
+<!--        <aop:pointcut id="test1" expression="execution(* login(..)) and execution(* register(..))"/>-->
+        <aop:pointcut id="test1" expression="execution(* login(..)) or execution(* register(..))"/>
         <aop:advisor advice-ref="around"  pointcut-ref="test1"/>
     </aop:config>
 
